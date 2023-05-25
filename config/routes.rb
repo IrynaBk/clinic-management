@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :patients
+  resources :doctors, only: [:index, :show]
+  resources :appointments, except: [:update] do
+    resources :recommendations
+  end
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users

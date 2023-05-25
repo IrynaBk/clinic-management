@@ -1,0 +1,15 @@
+<h1>Appointments</h1>
+
+<% if current_user.profile_type == 'Patient' %>
+  <ul>
+    <% @appointments.each do |appointment| %>
+      <li><%= link_to appointment.doctor.last_name, appointment %></li>
+    <% end %>
+  </ul>
+<% elsif current_user.profile_type == 'Doctor' %>
+  <ul>
+    <% @appointments.each do |appointment| %>
+      <li><%= link_to appointment.patient.last_name, appointment %></li>
+    <% end %>
+  </ul>
+<% end %>

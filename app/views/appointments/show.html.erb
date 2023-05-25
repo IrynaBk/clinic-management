@@ -1,0 +1,7 @@
+<h1>Appointment Details</h1>
+
+<% if current_user.profile == 'Patient' %>
+  <p><strong>Doctor:</strong> <%= @appointment.doctor.last_name %></p>
+<% elsif current_user.profile == 'Doctor' %>
+  <p><strong>Patient:</strong> <%= @appointment.patient.last_name %></p>
+<% end %>

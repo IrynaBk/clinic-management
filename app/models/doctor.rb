@@ -6,4 +6,9 @@ class Doctor < ApplicationRecord
     accepts_nested_attributes_for :user
     accepts_nested_attributes_for :categories
 
+    delegate :first_name, to: :user
+    delegate :last_name, to: :user
+    delegate :phone, to: :user
+    delegate :email, to: :user
+
 end

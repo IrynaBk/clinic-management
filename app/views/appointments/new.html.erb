@@ -1,0 +1,8 @@
+<%= form_for @appointment do |f| %>
+  <%= f.hidden_field :doctor_id, value: params[:doctor_id] %>
+  <%= f.hidden_field :patient_id, value:  params[:patient_id] %>
+
+ 
+
+  <%= f.submit "Create Appointment", class: "btn btn-primary" %>
+<% end %>

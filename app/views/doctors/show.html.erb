@@ -1,0 +1,7 @@
+<h1>Doctor Details</h1>
+
+<!-- Display doctor information -->
+
+<%= link_to "Create Appointment", new_appointment_path(doctor_id: @doctor.id, patient_id: current_user.profile.id), method: :get, class: "btn btn-primary" %>
+
+<!-- Other content of the show view -->
