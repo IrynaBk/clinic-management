@@ -1,15 +1,40 @@
 <h1>Appointments</h1>
 
 <% if current_user.profile_type == 'Patient' %>
-  <ul>
-    <% @appointments.each do |appointment| %>
-      <li><%= link_to appointment.doctor.last_name, appointment %></li>
-    <% end %>
-  </ul>
+  <% if @appointments.any? %>
+    <ul>
+      <% @appointments.each do |appointment| %>
+        <li><%= link_to appointment.doctor.full_name, appointment %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p class="text-gray-500">You don't have any appointments yet.</p>
+  <% end %>
 <% elsif current_user.profile_type == 'Doctor' %>
-  <ul>
-    <% @appointments.each do |appointment| %>
-      <li><%= link_to appointment.patient.last_name, appointment %></li>
-    <% end %>
-  </ul>
+  <% if @appointments.any? %>
+    <ul>
+      <% @appointments.each do |appointment| %>
+  <li class="bg-gray-100 rounded-lg p-4 mb-4">
+    <div class="flex items-center justify-between">
+      <div>
+      <h3 class="text-lg font-semibold">
+      <%= link_to appointment.patient.full_name, appointment %>
+    </h3> 
+    <p class="text-gray-500"><%= appointment.patient.email %></p>
+      </div>
+      <div>
+        <% if appointment.open? %>
+          <span class="bg-green-500 text-white px-2 py-1 rounded-full">Open</span>
+        <% elsif appointment.closed? %>
+          <span class="bg-red-500 text-white px-2 py-1 rounded-full">Closed</span>
+        <% end %>
+      </div>
+    </div>
+  </li>
+<% end %>
+
+    </ul>
+  <% else %>
+    <p class="text-gray-500">You don't have any appointments yet.</p>
+  <% end %>
 <% end %>

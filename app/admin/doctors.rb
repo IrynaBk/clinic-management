@@ -1,5 +1,5 @@
 ActiveAdmin.register Doctor do
-  permit_params user_attributes: [:id, :first_name, :last_name, :phone, :email, :password, :password_confirmation], category_ids: []
+  permit_params :avatar, user_attributes: [:id, :first_name, :last_name, :phone, :email, :password, :password_confirmation], category_ids: []
 
   filter :categories
   filter :created_at
@@ -55,6 +55,7 @@ ActiveAdmin.register Doctor do
           user_fields.input :password_confirmation
         end
         f.input :categories, as: :select, collection: Category.all, multiple: true
+        f.input :avatar, as: :file
       end 
     else
       f.inputs 'User Details', for: [:user, f.object.user] do |u|
@@ -78,6 +79,8 @@ ActiveAdmin.register Doctor do
       @user = User.new(permitted_params[:doctor][:user_attributes]) # Build the associated user with the provided user params
       @user.profile = @doctor
       @doctor.user = @user
+      @doctor.avatar.attach(permitted_params[:doctor][:avatar]) # Attach the uploaded avatar to the user
+
       if @doctor.save and @user.save
         redirect_to admin_doctor_path(@doctor), notice: 'Doctor created successfully.'
       else

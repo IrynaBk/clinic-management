@@ -4,7 +4,8 @@ class Appointment < ApplicationRecord
   has_one :recommendation, dependent: :destroy
 
   validate :verify_doctor, on: :create # verify if doctor's open appointments<= 10 
-
+  
+  enum status: { open: 0, closed: 1 }
 
   def verify_doctor
     open_appointments_count = doctor.appointments.where(status: 0).count

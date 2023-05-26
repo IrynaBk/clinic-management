@@ -12,5 +12,6 @@ class Doctor < ApplicationRecord
     delegate :email, to: :user
     delegate :full_name, to: :user
 
+    has_one_attached :avatar
 
 end
