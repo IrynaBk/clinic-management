@@ -20,6 +20,19 @@ class User < ApplicationRecord
     profile.present?
   end
 
+  def full_name
+    "#{first_name} #{last_name}" 
+  end
+
+  def is_a_doctor?
+    profile_type == 'Doctor'
+  end
+
+  def is_a_patient?
+    profile_type == 'Patient'
+  end
+
+
   # def email_required?
   #   false
   # end

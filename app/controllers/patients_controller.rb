@@ -1,5 +1,6 @@
 class PatientsController < ApplicationController
   before_action :authenticate_user!
+  load_and_authorize_resource  
   before_action :set_patient, only: [:update, :destroy, :edit]
 
   def show

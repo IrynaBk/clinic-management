@@ -1,5 +1,7 @@
-before_action :set_appointment
-  before_action :set_recommendation, only: [:edit, :update, :destroy]
+class RecommendationsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_appointment
+  before_action :set_recommendation, only: [:edit, :update, :destroy, :new]
 
   def create
     @recommendation = Recommendation.new(recommendation_params)
@@ -8,12 +10,14 @@ before_action :set_appointment
     if @recommendation.save
       redirect_to @appointment, notice: 'Recommendation was successfully created.'
     else
-      render :new
+      redirect_to @appointment, notice: "#{@recommendation.errors.full_messages.to_sentence}"
     end
   end
 
-  def edit
+  def new
+    @recommendation = Recommendation.new
   end
+
 
   def update
     if @recommendation.update(recommendation_params)

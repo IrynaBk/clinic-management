@@ -10,5 +10,7 @@ class Doctor < ApplicationRecord
     delegate :last_name, to: :user
     delegate :phone, to: :user
     delegate :email, to: :user
+    delegate :full_name, to: :user
+
 
 end

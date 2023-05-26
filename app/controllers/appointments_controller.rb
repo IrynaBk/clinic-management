@@ -1,5 +1,6 @@
 class AppointmentsController < ApplicationController
     before_action :authenticate_user!
+    load_and_authorize_resource
     before_action :set_appointment, only: [:show, :edit, :destroy]
 
     def create
@@ -22,7 +23,7 @@ class AppointmentsController < ApplicationController
     end
 
     def index
-        @appointments = current_user.profile.appointments
+        @appointments = Appointment.accessible_by(current_ability)
     end
 
 

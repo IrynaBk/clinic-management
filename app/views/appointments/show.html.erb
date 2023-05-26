@@ -1,7 +1,19 @@
 <h1>Appointment Details</h1>
 
-<% if current_user.profile == 'Patient' %>
+<% if current_user.profile_type == 'Patient' %>
   <p><strong>Doctor:</strong> <%= @appointment.doctor.last_name %></p>
-<% elsif current_user.profile == 'Doctor' %>
+<% elsif current_user.profile_type == 'Doctor' %>
   <p><strong>Patient:</strong> <%= @appointment.patient.last_name %></p>
+  <% if @appointment.recommendation %>
+  <h3>Existing Recommendation</h3>
+  <p><%= @appointment.recommendation.text %></p>
+<% else %>
+  <%= form_for [@appointment, @appointment.build_recommendation], url: appointment_recommendations_path(@appointment), method: :post do |f| %>
+    <div class="field">
+      <%= f.label :text, 'Recommendation Text' %>
+      <%= f.text_area :text, rows: 3, class: 'form-control' %>
+    </div>
+    <%= f.submit 'Create Recommendation', class: 'btn btn-primary' %>
+  <% end %>
+<% end %>
 <% end %>
