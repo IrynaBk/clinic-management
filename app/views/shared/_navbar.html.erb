@@ -1,8 +1,10 @@
-<nav class="bg-blue-600">
+<nav class="bg-blue-400">
   <div class="container mx-auto">
     <div class="flex justify-between items-center py-4">
-      <div class="space-x-4">
-            <a class="text-white text-lg font-semibold" href="#"><%= link_to 'Clinic', pages_home_path %></a>
+      <div class="flex items-center space-x-4">
+        <%= link_to pages_home_path do %>
+          <img src="https://clinic-managment.s3.eu-west-3.amazonaws.com/clinic.svg" alt="Clinic Logo" class="h-8">
+        <% end %>
 
         <% if user_signed_in? %>
           <% if current_user.is_a_doctor? %>

@@ -10,7 +10,7 @@ class RecommendationsController < ApplicationController
     if @recommendation.save
       redirect_to @appointment, notice: 'Recommendation was successfully created.'
     else
-      redirect_to @appointment, notice: "#{@recommendation.errors.full_messages.to_sentence}"
+      redirect_to @appointment, alert: "#{@recommendation.errors.full_messages.to_sentence}"
     end
   end
 

@@ -18,7 +18,7 @@ RSpec.describe "Recommendations", type: :request do
         expect {
           post appointment_recommendations_path(appointment_id: appointment.id), params: { recommendation: recommendation_params }
         }.to change(Recommendation, :count).by(1)
-         .and change { appointment.reload.status }.from(0).to(1)
+         .and change { appointment.reload.status }.from('open').to('closed')
 
         expect(appointment.reload.recommendation.text).to eq("Take medicines")
         expect(response).to redirect_to(appointment_path(appointment))
@@ -34,10 +34,10 @@ RSpec.describe "Recommendations", type: :request do
         expect {
           post appointment_recommendations_path(appointment_id: appointment.id), params: { recommendation: recommendation_params }
         }.to not_change(Recommendation, :count)
-         .and not_change {appointment.reload.status} .from(0)
+         .and not_change {appointment.reload.status} .from('open')
 
         expect(response).to redirect_to(appointment_path(appointment))
-        expect(flash[:notice]).to eq("Text can't be blank")
+        expect(flash[:alert]).to eq("Text can't be blank")
       end
     end
   end

@@ -9,7 +9,7 @@ class AppointmentsController < ApplicationController
         if @appointment.save
           redirect_to @appointment, notice: 'Appointment was successfully created.'
         else
-          render :new
+          redirect_to @appointment.doctor, alert: "#{@appointment.errors.full_messages.to_sentence}"
         end
     end
 
@@ -23,7 +23,10 @@ class AppointmentsController < ApplicationController
     end
 
     def index
-        @appointments = Appointment.accessible_by(current_ability)
+        @appointments = Appointment.accessible_by(current_ability).order(created_at: :desc)
+        if params[:status].present?
+            @appointments = @appointments.where(status: params[:status]).order(created_at: :desc)
+        end
     end
 
 
