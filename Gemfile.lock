@@ -208,6 +208,8 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.15.2-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.15.2-x86_64-linux)
+      racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.5.3)
     prettier_print (1.2.1)
@@ -296,6 +298,8 @@ GEM
       prettier_print (>= 1.2.0)
     tailwindcss-rails (2.0.29-x86_64-darwin)
       railties (>= 6.0.0)
+    tailwindcss-rails (2.0.29-x86_64-linux)
+      railties (>= 6.0.0)
     thor (1.2.2)
     timeout (0.3.2)
     turbo-rails (1.0.1)
@@ -324,6 +328,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   activeadmin
