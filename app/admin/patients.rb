@@ -68,7 +68,7 @@ ActiveAdmin.register Patient do
       @user.profile = @patient
       @patient.user = @user
       if @patient.save and @user.save
-        redirect_to admin_patient_path(@patient), notice: 'Doctor created successfully.'
+        redirect_to admin_patient_path(@patient), notice: 'Patient created successfully.'
       else
         flash.now[:error] = @patient.user.errors.full_messages.to_sentence
         render :new

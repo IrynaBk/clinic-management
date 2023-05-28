@@ -5,4 +5,15 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+require 'faker'
+
+10.times do
+  User.create!(
+    email: Faker::Internet.email,
+    phone: Faker::Base.numerify('###-###-####'),
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    password: "123456",
+    password_confirmation: "123456"
+  )
+end
