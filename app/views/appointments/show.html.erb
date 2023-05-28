@@ -1,4 +1,4 @@
-<section class="appointment-details mt-8">
+<section class="appointment-details mt-20">
   <div class="flex justify-center">
     <div class="max-w-xl p-8 sm:flex sm:space-x-6 bg-blue-300 text-white dark:bg-white-900 dark:text-white-100 rounded">
       <% if current_user.profile_type == 'Patient' %>
@@ -51,12 +51,12 @@
             <p><%= @appointment.recommendation.text %></p>
           <% else %>
             <%= form_for [@appointment, @appointment.build_recommendation], url: appointment_recommendations_path(@appointment), method: :post do |f| %>
-  <div class="field">
-    <%= f.label :text, 'Recommendation Text', class: 'block font-semibold' %>
-<%= f.text_area :text, rows: 3, class: 'form-control mt-2 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black' %>
-  </div>
-  <%= f.submit 'Create Recommendation', class: 'btn btn-primary mt-4 py-2 px-4 rounded-md bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:bg-blue-600' %>
-<% end %>
+            <div class="field">
+              <%= f.label :text, 'Recommendation Text', class: 'block font-semibold' %>
+            <%= f.text_area :text, rows: 3, class: 'form-control mt-2 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black' %>
+            </div>
+            <%= f.submit 'Create Recommendation', class: 'btn btn-primary mt-4 py-2 px-4 rounded-md bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:bg-blue-600' %>
+          <% end %>
           <% end %>
         </div>
       <% end %>

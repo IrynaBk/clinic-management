@@ -5,7 +5,7 @@
     <% end %>
 <% if current_user.profile_type == 'Patient' %>
   <% if @appointments.any? %>
-    <ul>
+    <ul class= "h-[30rem] overflow-y-auto">
       <% @appointments.each do |appointment| %>
   <li class="bg-gray-100 rounded-lg p-4 mb-4">
   <div class="flex items-center justify-between">
