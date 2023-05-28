@@ -75,10 +75,3 @@ This project is built using the following technologies and libraries:
 - Ruby on Rails (https://rubyonrails.org/)
 - PostgreSQL (https://www.postgresql.org/)
 
-## Contact
-
-If you have any questions or suggestions, please feel free to reach out to the project maintainer at `your-email@example.com`.
-
-Replace `your-username` and `your-email@example.com` with your own GitHub username and email address, respectively. Feel free to modify and customize the README file to match your project's specific details and requirements.
-
-Make sure to include any additional information, such as deployment instructions, usage examples, or specific project guidelines, based on your project's needs.
